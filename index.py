@@ -92,13 +92,17 @@ def pruebaLaboratorio(XoIn,aIn,cIn):
 	n_1 = cantidad-1
 	ali = a/2
 	als = 1-(ali)
-	li = chi2.ppf(ali, n_1)
-	ls = chi2.ppf(als, n_1)
 	divi = (12*n_1)
+	lstemp = chi2.ppf(ali, n_1)
+	litemp = chi2.ppf(als, n_1)
+	li = chi2.ppf(als, n_1)/divi
+	ls = chi2.ppf(ali, n_1)/divi
 	labels = datatemp['labelsArray']
 	values = datatemp['valuesArray']
+
+
 	
-	print(datatemp)
+	# print(aux1)
 	# print(ls)
 	# print(n_1)
 	# print(divi)
@@ -107,7 +111,7 @@ def pruebaLaboratorio(XoIn,aIn,cIn):
 	# print(labels)
 	# print(values)
 	# print(data)
-	return render_template("graph.html",labels=labels, values=values, puntos=data, a=a, n_1=n_1, ali=ali, als=als, li=li, ls=ls, cantidad=cantidad, divi=divi, aux1=aux1)
+	return render_template("graph.html",labels=labels, values=values, puntos=data, a=a, n_1=n_1, ali=ali, als=als, li=li, ls=ls, vr=vr, litemp=litemp, lstemp=lstemp,cantidad=cantidad, divi=divi, aux1=aux1)
 	# return render_template("graph.html",labels=labels, values=values)
 
 
@@ -132,7 +136,7 @@ def pruebaLaboratorio(XoIn,aIn,cIn):
 
 if __name__ == '__main__':
 	# print(d)
-	pruebaLaboratorio(59,21,13)
+	# pruebaLaboratorio(59,21,13)
 	# home(59,21,13)
 	# hello()
-	# app.run(host='127.0.0.1', port=20000, debug=True)
+	app.run(host='127.0.0.1', port=8000, debug=True)
